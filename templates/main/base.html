@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    {% load static %}-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JavaScript (Popper.js и Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+<!--    <link href= "{% static 'blog/css/bootstrap.min.css' %}" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Custom CSS &ndash;&gt;-->
+<!--    <link href= "{% static 'blog/css/blog-home.css' %}" rel="stylesheet">-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Подключение библиотеки FontAwesome для значков -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Подключение Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Подключение стилей -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<!--    <link href="{% static 'blog/css/bootstrap.min.css' %}" rel="stylesheet">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Подключение скриптов -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+
+    <!-- Ваши пользовательские стили -->
+<style>
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.5); /* Черный цвет с прозрачностью (здесь 0.5) */
+        border-radius: 10px;
+        margin: 10px;
+    }
+    .navbar-brand {
+        font-size: 32px; /* Увеличение размера шрифта для Game Store */
+    }
+    .footer {
+        background-color: #000;
+        color: rgba(192, 192, 192, 0.7);
+        padding: 20px 0;
+    }
+    .footer .column {
+        margin: 10px;
+    }
+    .footer-logo {
+        font-size: 24px;
+    }
+    .footer a {
+        color: rgba(192, 192, 192, 0.7);
+    }
+
+
+    #logo {
+        text-align: center;
+        font-size: 36px;
+        color: white;
+        font-family: 'cursive';
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin-top: 100px;
+        text-shadow: 3px 3px 5px #000;
+    }
+
+    .navbar .dropdown-menu {
+        background-color: rgba(169, 169, 169, 0.7);
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 10px; /* Закругленные углы */
+    }
+
+    .navbar .dropdown-menu a {
+        color: black; /* Цвет текста */
+    }
+
+
+
+    .fixed-top.navbar-hidden {
+            transform: translateY(-100%);
+            transition: transform 0.3s;
+    }
+
+
+    .navbar-profile {
+        background-color: black;
+        color: white;
+        padding: 10px 20px; /* Изменение отступов для увеличения размера кнопки */
+        border-radius: 15px; /* Закругленные углы */
+        transition: background-color 0.3s, color 0.3s; /* Плавное изменение цвета */
+
+    }
+
+
+    .navbar-cart {
+        background-color: black;
+        color: black;
+        padding: 10px 20px; /* Изменение отступов для увеличения размера кнопки */
+        border-radius: 15px; /* Закругленные углы */
+
+    }
+
+    .navbar-profile:hover {
+        background-color: white; /* Белый фон при наведении */
+        color: black; /* Черный текст при наведении */
+    }
+
+
+    .dropdown-menu {
+        background-color: white; /* Красно-розовый фон для выпадающего меню */
+        color: black; /* Белый текст для выпадающего меню */
+    }
+
+
+    /* При наведении на элементы выпадающего меню */
+    .dropdown-menu a:hover {
+        background-color: white; /* Белый фон при наведении */
+        color: black; /* Черный текст при наведении */
+    }
+
+
+
+
+
+
+
+
+        {% block style %}
+
+        {% endblock %}
+</style>
+
+    {% block head %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+
+
+
+
+
+<!-- Навбар -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(169, 169, 169, 0.7); border-radius: 10px; margin: 10px;">
+    <div class="container">
+
+        <a class="navbar-brand" href="{% url 'index'%}">
+            <img src="https://static.vecteezy.com/system/resources/previews/018/873/700/original/game-controller-gamepad-for-game-console-free-png.png" alt="Game Store" width="58" height="40">
+            <span style="font-size: 32px; margin-left: 10px;">Game Store</span>
+        </a>
+
+
+        <!-- Вертикальная линия -->
+        <hr class="d-none d-lg-block d-xl-block" style="height: 30px; border-left: 2px solid white; margin-left: 20px; margin-right: 20px;">
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Магазин</a>-->
+<!--                </li>-->
+
+<!--              &lt;!&ndash;Каталог&ndash;&gt;-->
+<!--              <li class="nav-item dropdown">-->
+<!--                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                      Каталог-->
+<!--                  </a>-->
+<!--                  <ul class="dropdown-menu">-->
+<!--                      <li>-->
+<!--                          <a class="dropdown-item" href="#">-->
+<!--                              <h6>Игровые мыши</h6>-->
+<!--                          </a>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                          <a class="dropdown-item" href="#">-->
+<!--                              <h6>Клавиатуры</h6>-->
+<!--                          </a>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                          <a class="dropdown-item" href="#">-->
+<!--                              <h6>Игровые кресла</h6>-->
+<!--                          </a>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                          <a class="dropdown-item" href="#">-->
+<!--                              <h6>Коврики для мыши</h6>-->
+<!--                          </a>-->
+<!--                      </li>-->
+<!--                  </ul>-->
+<!--              </li>-->
+        </div>
+
+
+            <!-- Поле Поиск -->
+            <form class="d-flex align-items-center" role="search" method="get" action="{% url 'search' %}">
+                {% csrf_token %}
+<!--                <input type="text" type="search" name="q" placeholder="Поиск товаров">-->
+                <input class="form-control me-2" type="text" type="search" placeholder="Введите ваш запрос" aria-label="Search" name="q">
+                <button class="btn btn-light" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+
+
+            <!-- Вертикальная линия -->
+        <hr class="d-none d-lg-block d-xl-block" style="height: 30px; border-left: 2px solid white; margin-left: 20px; margin-right: 20px;">
+
+
+<!--nav-link navbar-cart-->
+                <ul class="navbar-nav">
+                    <!--Корзина-->
+                    <li class="nav-item ml-2">
+                        <a class="nav-link navbar-profile" href="{% url 'cart' %}">
+                            <i class="fa-solid fa-cart-shopping"></i> Корзина
+                        </a>
+                    </li>
+
+                    <!-- пробел мужду Корзина и Профиль -->
+                    <div style="height: 10px; margin-left: 10px;"></div>
+
+                    <!--Профиль-->
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link navbar-profile" href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link navbar-profile" id="profileLink" href="{% url 'register' %}">
+                            <i class="fas fa-user-circle"></i> Войти
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+
+        </div>
+    </div>
+</nav>
+<!--Отступ-->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Ваше содержимое страницы -->
+
+            <div style="height: 100px;"></div>
+                {% block content %}
+                {% endblock %}
+
+
+
+
+
+
+
+
+
+<!-- Футер -->
+<div class="footer">
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 column">
+                <p class="footer-logo">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/873/700/original/game-controller-gamepad-for-game-console-free-png.png" alt="Game Store" width="58" height="40">
+                    <span style="font-size: 21px; margin-left: 7px;">Game Store</span>
+                </p>
+            </div>
+            <div class="col-md-2 column">
+                <span style="font-size: 17px; margin-left: 0px;">Наши соц. сети:</span><br><br>
+                <a href="#"><p> <span class="fab fa-facebook"></span> Facebook</p></a>
+                <a href="#"><p> <span class="fab fa-twitter"></span> Twitter</p></a>
+                <a href="#"><p> <span class="fab fa-telegram"></span> Telegram</p></a>
+                <a href="#"><p> <span class="fab fa-instagram"></span> Instagram</p></a>
+            </div>
+            <div class="col-md-2 column">
+                <span style="font-size: 17px; margin-left: 0px;">Свяжитесь с нами:</span><br><br>
+                <p>Адрес: Улица, Днепр</p>
+                <p>Телефон: +1234567890</p>
+                <p>Email: info@yourwebsite.com</p>
+            </div>
+            <div class="col-md-2 column">
+                <span style="font-size: 17px; margin-left: 0px;">Время работы:</span><br><br>
+                <p>Пн-Ср  09:00-21:00</p>
+                <p>Чт-Пт  09:00-19:00</p>
+                <p>Сб-Вс  12:30-17:30</p>
+            </div>
+            <div class="col-md-2 column">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="MasterCard Logo" width="45" height="30"><span> Master Card</span><br><br>
+                 <img src="https://www.pngall.com/wp-content/uploads/2017/05/Visa-Logo-PNG-Image.png" alt="Visa Logo" width="65" height="20"><br><br>
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal Logo" width="100" height="25">
+            </div>
+<!--            <div class="col-md-6">-->
+<!--                <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Logo_Razer_2017.png" alt="RAZER" width="100" height="37"></span>-->
+<!--                <span><img src="https://cdn.cookielaw.org/logos/96be46f4-957f-4368-a759-068d7328c7e8/69f4502c-95ac-4557-a363-86871fcb3f92/99c8b0a9-f79a-4415-a323-974350562f78/logitechg-logo.png" alt="Logitech" width="110" height="30"></span>-->
+<!--                <span><img src="https://www.eletek.ua/images/vendor-logo-hator.png" alt="PayPal Logo" width="100" height="25"></span>-->
+<!--                <span><img src="https://1000logos.net/wp-content/uploads/2021/04/HyperX-logo.png" alt="PayPal Logo" width="100" height="70"></span>-->
+<!--                <span><img src="https://tpucdn.com/review/dark-project-me1/images/logo.jpg" alt="PayPal Logo" width="105" height="27"></span>-->
+<!--            </div>-->
+        </div>
+        <pre>&copy; 2023 Game Store. Все права защищены.</pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+<!-- Подключение jQuery и Popper.js (перед подключением Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+
+<!-- Подключение Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+<script>
+    // Функция, которая открывает модальное окно
+    function openLoginModal() {
+        $('#loginModal').modal('show');
+    }
+
+    // Назначьте функцию для обработки события click на ссылку "Профиль"
+    $(document).ready(function() {
+        $('#profileLink').click(function() {
+            openLoginModal(); // Вызов функции для открытия модального окна
+        });
+    });
+</script>
+
+<script>
+  // Следите за скроллом страницы
+  var prevScrollPos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    var navbar = document.querySelector('.navbar');
+
+    // Если пользователь прокручивает страницу вниз
+    if (prevScrollPos < currentScrollPos) {
+      navbar.classList.add('navbar-hidden');
+    } else {
+      // Если пользователь прокручивает страницу вверх
+      navbar.classList.remove('navbar-hidden');
+    }
+    prevScrollPos = currentScrollPos;
+  };
+</script>
+
+
+</body>
+</html>

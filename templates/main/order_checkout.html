@@ -1,0 +1,383 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Оформления заказа{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</head>
+
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8">
+            <h4>Контактная информация</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <div class="container">
+                    <div class="order-section">
+                        <div class="order-box">
+                            <label for="phone">Номер телефона</label>
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="+38-(___)-___-__-__" required>
+                        </div>
+                        <div class="order-box">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="order-box">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control">
+                        </div>
+                        <div class="order-box">
+                            <label>Получать заказ другому человеку</label>
+                            <input type="checkbox" id="receive-for-another" name="receive-for-another">
+                        </div>
+                        <div id="additional-recipient-fields" style="display: none">
+                            <div class="order-box">
+                                <label>Это на подарок</label>
+                                <input type="checkbox" id="gift" name="gift">
+                            </div>
+                            <div class="order-box">
+                                <label for="recipient-phone">Номер получателя</label>
+                                <input type="tel" id="recipient-phone" name="recipient-phone" class="form-control" placeholder="+38-(___)-___-__-__">
+                            </div>
+                            <div class="order-box">
+                                <label for="recipient-name">Имя получателя</label>
+                                <input type="text" id="recipient-name" name="recipient-name" class="form-control">
+                            </div>
+                            <div class="order-box">
+                                <label for="recipient-surname">Фамилия получателя</label>
+                                <input type="text" id="recipient-surname" name="recipient-surname" class="form-control">
+                            </div>
+                            <div class="order-box">
+                                <label for="recipient-patronymic">Отчество получателя</label>
+                                <input type="text" id="recipient-patronymic" name="recipient-patronymic" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    <div class="container">
+        <div class="col-md-8">
+            <h4>Способ доставки</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <div class="order-section">
+                    <div class="order-box">
+                        <label for="delivery-method">Выберите способ доставки</label>
+                        <select id="delivery-method" name="delivery-method" class="form-control" required>
+                            <option value="empty">Выберите способ доставки</option>
+                            <option value="courier">Доставка курьером "GameStore"</option>
+                            <option value="nova-poshta">Доставка "Новая Почта"</option>
+                            <option value="ukr-poshta">Доставка Укр Почта"</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-8" id="courier-fields" style="display: none;">
+            <h4>Дополнительная информация для доставки курьером "GameStore"</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <div class="order-section">
+                    <div class="order-box">
+                        <label for="delivery-date">Дата доставки</label>
+                        <input type="date" id="delivery-date" name="delivery-date" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="street">Улица</label>
+                        <input type="text" id="street" name="street" class="form-control" required>
+                    </div>
+                    <div class="order-box">
+                        <label for="house">Дом</label>
+                        <input type="text" id="house" name="house" class="form-control" required>
+                    </div>
+                    <div class="order-box">
+                        <label for="apartment">Квартира</label>
+                        <input type="text" id="apartment" name="apartment" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="last-name">Фамилия</label>
+                        <input type="text" id="last-name" name="last-name" class="form-control" required>
+                    </div>
+                    <div class="order-box">
+                        <label for="first-name">Имя</label>
+                        <input type="text" id="first-name" name="first-name" class="form-control" required>
+                    </div>
+                    <div class="order-box">
+                        <label for="middle-name">Отчество</label>
+                        <input type="text" id="middle-name" name="middle-name" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Дополнительные поля для доставки "Новая Почта" -->
+        <div class="col-md-8" id="nova-poshta-fields" style="display: none;">
+            <h4>Дополнительная информация для доставки "Новая Почта"</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <div class="order-section">
+                    <div class="order-box">
+                        <label for="nova-poshta-delivery-date">Дата доставки</label>
+                        <input type="date" id="nova-poshta-delivery-date" name="nova-poshta-delivery-date" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="nova-poshta-city">Город</label>
+                        <select id="nova-poshta-city" name="nova-poshta-city" class="form-control">
+                            <option value="kiev">Киев</option>
+                            <option value="kharkiv">Харьков</option>
+                            <option value="lviv">Львов</option>
+                            <!-- Добавьте остальные города Украины здесь -->
+                        </select>
+                    </div>
+                    <div class="order-box">
+                        <label for="nova-poshta-office-number">Номер отделения "Новая Почта"</label>
+                        <select id="nova-poshta-office-number" name="nova-poshta-office-number" class="form-control">
+                            <option value="1">Отделение 1</option>
+                            <option value="2">Отделение 2</option>
+                            <option value="3">Отделение 3</option>
+                        </select>
+                    </div>
+                    <div class="order-box">
+                        <label for="nova-poshta-last-name">Фамилия</label>
+                        <input type="text" id="nova-poshta-last-name" name="nova-poshta-last-name" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="nova-poshta-first-name">Имя</label>
+                        <input type="text" id="nova-poshta-first-name" name="nova-poshta-first-name" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="nova-poshta-middle-name">Отчество</label>
+                        <input type="text" id="nova-poshta-middle-name" name="nova-poshta-middle-name" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дополнительные поля для доставки "Укр Почта" -->
+        <div class="col-md-8" id="ukr-poshta-fields" style="display: none;">
+            <h4>Дополнительная информация для доставки "Укр Почта"</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <div class="order-section">
+                    <div class="order-box">
+                        <label for="ukr-poshta-delivery-date">Дата доставки</label>
+                        <input type="date" id="ukr-poshta-delivery-date" name="ukr-poshta-delivery-date" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="ukr-poshta-city">Город</label>
+                        <select id="ukr-poshta-city" name="ukr-poshta-city" class="form-control">
+                            <option value="kiev">Киев</option>
+                            <option value="kharkiv">Харьков</option>
+                            <option value="lviv">Львов</option>
+                            <!-- Добавьте остальные города Украины здесь -->
+                        </select>
+                    </div>
+                    <div class="order-box">
+                        <label for="ukr-poshta-office-number">Номер отделения "Укр Почта"</label>
+                        <select id="ukr-poshta-office-number" name="ukr-poshta-office-number" class="form-control">
+                            <option value="1">Отделение 1</option>
+                            <option value="2">Отделение 2</option>
+                            <option value="3">Отделение 3</option>
+                        </select>
+                    </div>
+                    <div class="order-box">
+                        <label for="ukr-poshta-last-name">Фамилия</label>
+                        <input type="text" id="ukr-poshta-last-name" name="ukr-poshta-last-name" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="ukr-poshta-first-name">Имя</label>
+                        <input type="text" id="ukr-poshta-first-name" name="ukr-poshta-first-name" class="form-control">
+                    </div>
+                    <div class="order-box">
+                        <label for="ukr-poshta-middle-name">Отчество</label>
+                        <input type="text" id="ukr-poshta-middle-name" name="ukr-poshta-middle-name" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <br>
+        <br>
+        <div class="col-md-8">
+            <h4>Способ оплаты</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                <div class="order-section">
+                    <div class="order-box">
+                        <input type="radio" id="payment-on-delivery" name="payment-method" value="on-delivery" required>
+                        <label for="payment-on-delivery"><i class="fa-regular fa-money-bill-1"></i> При получении</label>
+                    </div>
+                    <div class="order-box">
+                        <input type="radio" id="payment-online" name="payment-method" value="online" required>
+                        <label for="payment-online"><i class="fa-regular fa-credit-card"></i> Онлайн (Visa/Master Card/Pay-Pal)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-8">
+            <h4>Дополнительная информация</h4>
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                <div class="order-section">
+                    <div class="order-box">
+                        <input type="checkbox" id="no-call" name="no-call">
+                        <label for="no-call">Не звонить для подтверждения заказа</label>
+                    </div>
+                    <div class="order-box">
+                        <label for="order-comment">Комментарий к заказу</label>
+                        <textarea id="order-comment" name="order-comment" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+                <h4>Оформление заказа</h4>
+        <div class="col-md-8 column">
+            <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                <!-- Дополнительные элементы ниже -->
+                <div class="order-summary">
+                    <img src="{{ product.imageURL_1 }}" alt="{{ product.title }}">
+                    <h4>Цена: <span class="total-price">{{ product.price }} ₴</span></h4>
+                    <span>
+                        <a href="{% url 'index' %}" class="btn btn-success btn-lg btn-buy" style="background-color: #43b02a; border-color: #43b02a;">
+                            <i class="fa-solid fa-cart-shopping"></i> Оформить заказ
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+</div>
+
+<div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 column">
+                        <h6><i class="fa-solid fa-truck"></i> Доставка</h6>
+                        <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                            <p>Курьером "GameStore", доставка по адресу или в отделение "Новая Почта" и "Укр Почта"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <h6><i class="fa-solid fa-circle-check"></i> Гарантия</h6>
+                        <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                            <p>Сертифицированная техника с официальной гарантией от производителя</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <h6><i class="fa-regular fa-money-bill-1"></i> Оплата</h6>
+                        <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                            <p>Оплатить покупку можно наличными, картой или безналичным расчетом</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <h6><i class="fa-solid fa-rotate-left"></i> Возвращение</h6>
+                        <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%">
+                            <p>Возврат товара происходит в течение 14 дней после покупки в соответствии с действующим законом</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+
+
+
+
+
+    <script>
+        const deliveryMethodSelect = document.getElementById('delivery-method');
+        const courierFields = document.getElementById('courier-fields');
+        const ukrPoshtaFields = document.getElementById('ukr-poshta-fields');
+        const novaPoshtaFields = document.getElementById('nova-poshta-fields');
+        const recipientFields = document.getElementById('additional-recipient-fields');
+        const giftCheckbox = document.getElementById('gift');
+        const receiveForAnotherCheckbox = document.getElementById('receive-for-another');
+
+        deliveryMethodSelect.addEventListener('change', toggleDeliveryFields);
+        receiveForAnotherCheckbox.addEventListener('change', toggleRecipientFields);
+
+        function toggleDeliveryFields() {
+            const selectedMethod = deliveryMethodSelect.value;
+            courierFields.style.display = selectedMethod === 'courier' ? 'block' : 'none';
+            ukrPoshtaFields.style.display = selectedMethod === 'ukr-poshta' ? 'block' : 'none';
+            novaPoshtaFields.style.display = selectedMethod === 'nova-poshta' ? 'block' : 'none';
+        }
+
+        function toggleRecipientFields() {
+            recipientFields.style.display = receiveForAnotherCheckbox.checked ? 'block' : 'none';
+            if (!receiveForAnotherCheckbox.checked) {
+                // Clear recipient fields if "Receive for another person" is unchecked
+                giftCheckbox.checked = false;
+                document.getElementById('recipient-phone').value = '';
+                document.getElementById('recipient-name').value = '';
+                document.getElementById('recipient-surname').value = '';
+                document.getElementById('recipient-patronymic').value = '';
+            }
+        }
+    </script>
+    <script>
+
+    const deliveryMethodSelect = document.getElementById('delivery-method');
+    const courierFields = document.getElementById('courier-fields');
+    const novaPoshtaFields = document.getElementById('nova-poshta-fields');
+    const ukrPoshtaFields = document.getElementById('ukr-poshta-fields');
+
+    deliveryMethodSelect.addEventListener('change', toggleDeliveryFields);
+
+    function toggleDeliveryFields() {
+        const selectedMethod = deliveryMethodSelect.value;
+        courierFields.style.display = selectedMethod === 'courier' ? 'block' : 'none';
+        novaPoshtaFields.style.display = selectedMethod === 'nova-poshta' ? 'block' : 'none';
+        ukrPoshtaFields.style.display = selectedMethod === 'ukr-poshta' ? 'block' : 'none';
+    }
+
+    </script>
+
+<style>
+
+    .btn-buy {
+        background-color: #43b02a !important;
+        border-color: #43b02a !important;
+        color: white !important;
+        transition: background-color 0.1s;
+    }
+
+    .btn-buy:hover {
+        background-color: #e25c1d !important;
+        border-color: transparent !important;
+    }
+
+</style>
+
+{% endblock %}

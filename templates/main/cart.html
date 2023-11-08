@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+{% block title %}Корзина товаров{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Корзина товаров</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Изображение</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                        <th>Удалить</th>
+                    </tr>
+                </thead>
+                <tbody>
+<!--                    <tr>-->
+<!--                        <td><img src="{{ post.imageURL }}" alt="{{ post.title }}" width="50"></td>-->
+<!--                        <td>{{ post.title }}</td>-->
+<!--                        <td>{{ post.price }} ₴</td>-->
+<!--                        <td>-->
+<!--                            <button class="btn btn-sm btn-decrement" data-product-id="{{ post.id }}">-</button>-->
+<!--                            <span>{{ item.quantity }} 1</span>-->
+<!--                            <button class="btn btn-sm btn-increment" data-product-id="{{ post.id }}">+</button>-->
+<!--                        </td>-->
+<!--                        <td>{{ item.total_price }} ₴</td>-->
+<!--                        <td><button class="btn btn-danger btn-remove" data-product-id="{{ post.id }}">Удалить</button></td>-->
+<!--                    </tr>-->
+
+                    <tr>
+                        <td><img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/h/a/hator-skyfall-tkl-pro-wireless-white_800_1.jpg/w_600" alt="Hator Skyfall TKL PRO Wireless" width="50"></td>
+                        <td>Hator Skyfall TKL PRO Wireless</td>
+                        <td>4.199 ₴</td>
+                        <td>
+                            <button class="btn btn-sm btn-decrement" data-product-id="{{ post.id }}">-</button>
+                            <span>{{ item.quantity }} 1</span>
+                            <button class="btn btn-sm btn-increment" data-product-id="{{ post.id }}">+</button>
+                        </td>
+                        <td>4.199 ₴</td>
+                        <td><button class="btn btn-danger btn-remove" data-product-id="{{ post.id }}">Удалить</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Общая сумма</h5>
+                    <h4 class="card-text">{{ cart_total }} 8.398 ₴</h4>
+                    <a href="{% url 'order_checkout' %}?product_id=1" class="btn btn-success btn-lg btn-buy" style="background-color: #43b02a; border-color: #43b02a;">
+                        Оформить заказ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br> <br><br><br><br><br><br> <br><br><br><br><br><br>
+
+<style>
+
+
+    .btn-buy {
+        background-color: #43b02a !important;
+        border-color: #43b02a !important;
+        color: white !important;
+        transition: background-color 0.1s;
+    }
+
+    .btn-buy:hover {
+        background-color: #e25c1d !important;
+        border-color: transparent !important;
+    }
+
+
+</style>
+
+{% endblock %}

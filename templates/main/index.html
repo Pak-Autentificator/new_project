@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<style>
+    .card {
+        height: 100%;
+    }
+
+    .card-img-top {
+        height: 100%; /* Фиксированная высота для изображения */
+        object-fit: contain; /* Изображение будет сохранять пропорции и автоматически подстраиваться под карточку */
+    }
+
+
+    .btn-buy {
+        background-color: #43b02a !important;
+        border-color: #43b02a !important;
+        color: white !important;
+        transition: background-color 0.1s;
+    }
+
+    .btn-buy:hover {
+        background-color: #e25c1d !important;
+        border-color: transparent !important;
+    }
+
+
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="font-family: century gothic;">Добро пожаловать в игровой магазин</h1>
+            <p style="font-family: century gothic;">Наш магазин для всех ваших игровых потребностей. Исследуйте наш широкий ассортимент игровых устройств, аксессуаров и многое другое.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="https://img.championat.com/s/735x490/news/big/z/c/chto-budet-esli-dolgo-igrat-v-kompyuter_16348359341567870658.jpg" alt="Изображение игры" class="img-fluid rounded border border-success">
+        </div>
+    </div>
+
+    <h2>Все товары</h2>
+    <div class="row">
+
+
+{% for elem in new_post %}
+                <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{ elem.imageURL_title }}" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ elem.title }}</h5>
+                    <p class="card-text">{{ elem.product_information_60 }}</p>
+                    <span class="price" style="font-size: 200%; font-family: 'cambria';">{{ elem.price }}</span> <span style="font-size: 150%;">₴  </span>
+                    <a href="{% url 'post-detail' elem.id %}" class="btn btn-success btn-lg btn-buy" style="background-color: #43b02a; border-color: #43b02a;">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+
+        <!-- Добавьте больше карточек товаров с такой же структурой, чтобы сделать их одинакового размера -->
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+<!--    body {-->
+<!--      background-image: url('https://phonoteka.org/uploads/posts/2022-01/1642659457_1-phonoteka-org-p-chernii-fon-gradient-1.jpg');-->
+<!--      background-size: cover;-->
+<!--      background-repeat: no-repeat;-->
+<!--    }-->
+
+
+
+
+
+
+
+
+
+<!--<div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">-->
+<!--  <div class="carousel-inner">-->
+<!--    <div class="carousel-item active">-->
+<!--      <img src="https://content.rozetka.com.ua/goods/images/big/30403514.jpg" class="d-block w-100" alt="...">-->
+<!--    </div>-->
+<!--    <div class="carousel-item">-->
+<!--      <img src="https://content.rozetka.com.ua/goods/images/big/30403514.jpg" class="d-block w-100" alt="...">-->
+<!--    </div>-->
+<!--    <div class="carousel-item">-->
+<!--      <img src="https://content.rozetka.com.ua/goods/images/big/30403514.jpg" class="d-block w-100" alt="...">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">-->
+<!--    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--    <span class="visually-hidden">Previous</span>-->
+<!--  </button>-->
+<!--  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">-->
+<!--    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--    <span class="visually-hidden">Next</span>-->
+<!--  </button>-->
+<!--</div>-->
+
+
+
+
+<!--    <div class="center-block">-->
+<!--        <div class="col-md-6">-->
+<!--            <a href="{% url 'sell'%}">-->
+<!--                <img class="img-responsive" src="https://www.clife.ru/upload/ammina.optimizer/jpg-webp/q80/upload/medialibrary/129/dark_project_kd87a_teal_cup_22_min.webp" alt="Dark Project KD87A" width="800" height="800">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->

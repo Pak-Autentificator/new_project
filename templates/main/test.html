@@ -1,0 +1,169 @@
+{% extends 'main/base.html' %}
+
+{% block title %} GameStore-Главная{% endblock %}
+
+{% block style %}
+
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 25vh;
+}
+
+/* Стили для текста надписи "Магазин" */
+.store-heading {
+  font-size: 5em; /* Увеличьте размер текста в 3 раза */
+  font-family: "arial black"; /* Используйте шрифт arial black */
+}
+
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <header class="text-center mt-4">
+    <h2 class="store-heading">Магазин</h2> <!-- Добавьте класс store-heading здесь -->
+  </header>
+
+
+
+
+   <style>
+  .card {
+    height: 100%;
+  }
+
+  .card-img-top {
+    height: 100%; /* Фиксированная высота для изображения */
+    object-fit: contain; /* Изображение будет сохранять пропорции и автоматически подстраиваться под карточку */
+  }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="font-family: century gothic;">Добро пожаловать в игровой магазин</h1>
+            <p style="font-family: century gothic;">Ваш магазин для всех ваших игровых потребностей. Исследуйте наш широкий ассортимент игровых устройств, аксессуаров и многое другое.</p>
+        </div>
+         <div class="col-md-4">
+            <img src="https://img.championat.com/s/735x490/news/big/z/c/chto-budet-esli-dolgo-igrat-v-kompyuter_16348359341567870658.jpg" alt="Изображение игры" class="img-fluid rounded border border-success">
+        </div>
+    </div>
+
+    <h2>Избранные товары</h2>
+    <div class="row">
+
+                <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/i/p/iphone_15_black_pdp_image_position-1__ww-en_1__2.jpg/w_600" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Apple iPhone 15</h5>
+                    <p class="card-text">Смартфон Apple iPhone 15 128Gb Black</p>
+                    <a href="{% url 'sell' %}" class="btn btn-primary">Купить сейчас</a>
+                </div>
+            </div>
+        </div>
+
+                <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/h/a/hator_quasar_essential_usb_mint_htm-404.jpg" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Игровая мышь</h5>
+                    <p class="card-text">Игровая мышь с высокой точностью для максимального контроля.</p>
+                    <a href="#" class="btn btn-primary">Купить сейчас</a>
+                </div>
+            </div>
+        </div>
+
+                        <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/i/p/iphone-14-pro-storage-select-202209-6-7inch-deeppurple_1.jpg/w_600" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Игровая мышь</h5>
+                    <p class="card-text">Игровая мышь с высокой точностью для максимального контроля.</p>
+                    <a href="#" class="btn btn-primary">Купить сейчас</a>
+                </div>
+            </div>
+        </div>
+
+                <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/0/2/02d30417d556995af3e4408564ce3de8_1_1_.jpg/w_600" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Игровая мышь</h5>
+                    <p class="card-text">Игровая мышь с высокой точностью для максимального контроля.</p>
+                    <a href="#" class="btn btn-primary">Купить сейчас</a>
+                </div>
+            </div>
+        </div>
+
+                <!-- Карточки товаров -->
+        <div class="col-md-3">
+            <div class="card">
+                <img src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/i/p/iphone-14-pro-storage-select-202209-6-7inch-deeppurple_1.jpg/w_600" alt="Товар 1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Игровая мышь</h5>
+                    <p class="card-text">Игровая мышь с высокой точностью для максимального контроля.</p>
+                    <a href="#" class="btn btn-primary">Купить сейчас</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Добавьте больше карточек товаров с такой же структурой, чтобы сделать их одинакового размера -->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <div class="centered-content">-->
+<!--    <ul class="nav nav-pills">-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" href="#">Все</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="#">Мыши</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="{% url 'sell' %}">Клавиатуры</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="#">Кресла</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+  <h1 class="mt-4">Я тут</h1>
+  <h1>Я тут</h1>
+  <h1>Я тут</h1>
+  <h1>Я тут</h1>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.nav-link').click(function(e) {
+    e.preventDefault();
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
+  });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,383 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="product-images">
+                <!-- Карусель (Bootstrap карусель) -->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+
+                    <!-- Слайды карусели -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carousel-container">
+                                <img src="{{ post.imageURL_1 }}" alt="Слайд 1">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-container">
+                                <img src="{{ post.imageURL_2 }}" alt="Слайд 2">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-container">
+                                <img src="{{ post.imageURL_3 }}" alt="Слайд 3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Стрелки для переключения слайдов -->
+                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Информация о товаре -->
+                <div class="product-title" style="font-size: 300%; font-family: 'franklin gothic medium';">{{ post.title }}</div>
+
+                <div class="rating">★★★★★</div>
+                <hr>
+                <div>
+                    <span class="price" style="font-size: 200%; font-family: 'consolas';">{{ post.price }}</span> <span style="font-size: 150%;">₴  </span>
+
+           <!-- Кнопка "Купить" -->
+                    <span>
+                        <a href="{% url 'order_checkout' %}?product_id={{ post.id }}" class="btn btn-success btn-lg btn-buy" style="background-color: #43b02a; border-color: #43b02a;">
+                           <i class="fa-solid fa-cart-shopping"></i> Купить
+                        </a>
+                        <a href="{% url 'cart' %}" class="btn btn-success btn-lg btn-buy" style="background-color: #43b02a; border-color: #43b02a;">
+                           <i class="fa-solid fa-cart-shopping"></i> В корзину
+                        </a>
+                    </span>
+
+                </div>
+                <hr>
+
+                <!-- Кнопка "Купить в кредит", которая будет открывать модальное окно -->
+                <div style="display: flex; align-items: center; margin-top: 2%;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCartModal" style="background-color: #0404ec; border-color: #0404ec; margin-right: 5%;">
+                        Купить в кредит
+                    </button>
+
+                    <img src="https://cdn.comfy.ua/media/label/oche-07_25.svg" alt="Карта 1" style="width: 5%; margin-right: 2%;">
+                    <img src="https://cdn.comfy.ua/media/label/abank-05_9.svg" alt="Карта 2" style="width: 5%; margin-right: 2%;">
+                    <img src="https://cdn.comfy.ua/media/label/pumb-03_11.svg" alt="Карта 3" style="width: 5%; margin-right: 2%;">
+                    <img src="https://cdn.comfy.ua/media/label/mono-04_5.svg" alt="Карта 4" style="width: 5%;">
+                </div>
+
+                <!-- Модальное окно -->
+                <div class="modal fade" id="creditCartModal" tabindex="-1" role="dialog" aria-labelledby="creditCartModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="creditCartModalLabel">Корзина оформления кредита</h5>
+                                <div class="close" data-dismiss="modal" aria-label="Close"><i class="fa-regular fa-circle-xmark"></i></div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="cart-item">
+                                    <img src="{{ post.imageURL_title }}" alt="{{ post.title }}">
+                                    <div class="item-details">
+                                        <p class="item-price">{{ post.product_information_60 }}</p>
+                                    </div>
+                                    <p class="item-price">{{ post.price }} ₴</p>
+                                </div>
+                                <div class="gift">
+                                    <img src="https://3glte.com.ua/image/cache/catalog/Novosti/%D0%B2%D0%BE%D0%B4%D0%B0%D1%84%D0%BE%D0%BD-1200x800-product_popup.png" alt="Стартовий пакет Vodafone SuperNet Start">
+                                    <p class="gift-description">Стартовий пакет Vodafone SuperNet Start - 1₴</p>
+                                </div>
+                                <p class="no-credit-packages">Идекс товара: {{ post.id }}</p>
+                                <p class="no-credit-packages">Для этих продуктов отсутствуют кредитные пакеты.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <p>Доставка по Днепру:</p>
+                <p>Кур'єр GameStore - 200₴</p>
+                <hr>
+                <p>Оплачивайте покупку наличными, картой или переводом на банковские реквизиты (безналичный расчет)</p>
+                <p>Вся техника имеет сертификаты и гарантии от производителя. Вы можете вернуть товар в течение 14 дней после покупки</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция Характеристики -->
+    <div class="characteristics">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Характеристики:</h4>
+                <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+                    <p><strong>Тип клавиатуры</strong></p>
+                    <p>{{ post.keyboard_type }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Подключение</strong></p>
+                    <p>{{ post.connection }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Подсветка клавиш</strong></p>
+                    <p>{{ post.backlit_keys }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Форма</strong></p>
+                    <p>{{ post.form }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Особенности</strong></p>
+                    <p>{{ post.peculiarities }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Страна-производитель</strong></p>
+                    <p>{{ post.manufacturer_country }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Раскладка</strong></p>
+                    <p>{{ post.layout }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Цвет</strong></p>
+                    <p>{{ post.color }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Интерфейс</strong></p>
+                    <p>{{ post.interface }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Вес</strong></p>
+                    <p>{{ post.weight }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Корпус</strong></p>
+                    <p>{{ post.frame }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Дополнительные функции</strong></p>
+                    <p>{{ post.additional_functions }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Дистанция срабатывания</strong></p>
+                    <p>{{ post.sensing_distance }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Сила нажатия</strong></p>
+                    <p>{{ post.pressure_force }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Технология производства</strong></p>
+                    <p>{{ post.production_technology }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Количество кнопок клавиатуры</strong></p>
+                    <p>{{ post.number_of_keyboard_buttons }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Особенности клавиш</strong></p>
+                    <p>{{ post.key_features }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Комплектация</strong></p>
+                    <p>{{ post.equipment }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Размеры</strong></p>
+                    <p>{{ post.dimensions }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Ресурс нажатия клавиш</strong></p>
+                    <p>{{ post.keystroke_resource }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Цвет букв кириллицы</strong></p>
+                    <p>{{ post.color_of_cyrillic_letters }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Совместимость с ОС</strong></p>
+                    <p>{{ post.os_compatibility }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Длина кабеля, м</strong></p>
+                    <p>{{ post.cable_length }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Страна регистрации бренда</strong></p>
+                    <p>{{ post.brand_registration_country }}</p>
+                    <hr style="opacity: 0.5;">
+                    <p><strong>Гарантия</strong></p>
+                    <p>{{ post.guarantee }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h4>Полезная информация:</h4>
+                <div class="characteristics-column" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 3%;">
+    <!--        <div class="col-md-6">-->
+                <div class="keyboard-info">
+                    <h5>Информация о клавиатуре</h5>
+                    <hr style="opacity: 0.5;">
+                    <p>{{ post.product_information }}</p>
+                </div>
+
+            <div class="cooperation-info">
+                <br>
+                <br>
+                <h5>Информация о сотрудничестве</h5>
+                <hr style="opacity: 0.5;">
+                <p>Наш сайт гордится партнерством с ведущими производителями игровых устройств:</p>
+                <ul>
+                    <li>HATOR - фирма продаж игровых устройств в Украине.</li>
+                    <li>Logitech - производитель клавиатур и других игровых устройств.</li>
+                    <li>HayperX - известный бренд игровых клавиату</li>
+                    <li>Razer, Aser, MSI, ASUS, Asus rog stix, Varmilo, Apex Pro - другие известные бренды в мире игровых устройств.</li>
+                </ul>
+            </div>
+
+            <div class="payment-info">
+                <br>
+                <br>
+                <h5>Информация об оплате</h5>
+                <hr style="opacity: 0.5;">
+                <p>Мы предоставляем разнообразные варианты оплаты для вашего удобства:</p>
+                <ul>
+                    <li>VISA - оплата банковской картой VISA.</li>
+                    <li>MasterCard - оплата банковской картой MasterCard.</li>
+                    <li>PayPal - использование системы онлайн-платежей PayPal.</li>
+                </ul>
+            </div>
+
+            <div class="about-us-info">
+                <br>
+                <br>
+                <h5>Информация о нас</h5>
+                <p>Мы расположены в городе Днепр и гордимся предоставлением высококачественных игровых устройств для наших клиентов.</p>
+                <p>Контактный номер телефона: +1234567890</p>
+                <ul>График работы:
+                    <li>Пн-Ср: 09:00-21:00</li>
+                    <li>Чт-Пт: 09:00-19:00</li>
+                    <li>Сб-Вс: 12:30-17:30</li>
+                </ul>
+
+            </div>
+            <br>
+            <br>
+            <h5><strong>Информация о Доставке</strong></h5>
+            <hr style="opacity: 0.5;">
+            <br>
+            <div class="delivery-info">
+                <h5><strong>Новая Почта</strong></h5>
+                <p>Новая Почта - это одна из ведущих курьерских служб в Украине. Мы предоставляем быструю доставку от 1 дня в любой город Украины. Вы можете выбрать способ доставки:</p>
+                <ul>
+                    <li>Отделение Новой Почты</li>
+                    <li>Почтоматы</li>
+                    <li>Курьерская доставка</li>
+                </ul>
+                <p>Мы также осуществляем международную доставку, включая Польшу.</p>
+            </div>
+
+            <div class="delivery-info">
+                <br>
+                <h5><strong>УкрПочта</strong></h5>
+                <p>УкрПочта - это украинская почтовая служба, предоставляющая доставку в любой город и отделение УкрПочты в вашем городе. Мы обеспечиваем надежную и удобную доставку для наших клиентов.</p>
+            </div>
+
+            <div class="delivery-info">
+                <br>
+                <h5><strong>Курьером GameStore</strong></h5>
+                <p>Доставка курьером GameStore доступна исключительно по городу Днепр. Мы осуществляем доставку прямо под двери в рабочее время, в соответствии с нашим графиком работы.</p>
+                <p>Стоимость доставки курьером GameStore начинается от 200 гривен.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Конец секции Характеристики -->
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+
+    .characteristics ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .characteristics {
+        background-color: white; /* Задний цвет */
+
+        padding: 20px; /* Добавьте отступы по вашему усмотрению */
+    }
+
+    /* Стиль для контейнера с картинками */
+    .carousel-container {
+        text-align: center; /* Центрируем изображения внутри контейнера */
+        width: 35em; /* Устанавливаем фиксированную ширину 600px */
+        height: 35em; /* Устанавливаем фиксированную высоту 750px */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Стиль для картинок внутри контейнера */
+    .carousel-container img {
+        width: 100%; /* Заполняем ширину контейнера */
+        height: 100%; /* Заполняем высоту контейнера */
+        object-fit: contain; /* Сохраняем соотношение сторон и центрируем изображение */
+    }
+
+    .cart-popup {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 300px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-item, .gift {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .cart-item img, .gift img {
+        width: 50px;
+        height: auto;
+
+    }
+
+    .item-details, .gift-description {
+        flex: 1;
+    }
+
+    .item-code {
+        color: #888;
+        font-size: 14px;
+    }
+
+    .item-price, .gift-description {
+        font-weight: bold;
+    }
+
+    .no-credit-packages {
+        color: #888;
+        font-size: 14px;
+    }
+
+    .fa-regular.fa-circle-xmark:hover {
+        color: #a80000;
+    }
+
+    .btn-buy {
+        background-color: #43b02a !important;
+        border-color: #43b02a !important;
+        color: white !important;
+        transition: background-color 0.1s;
+    }
+
+    .btn-buy:hover {
+        background-color: #e25c1d !important;
+        border-color: transparent !important;
+    }
+
+    /* Цвет стрелок для перелистывания */
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: black; /* Задаем черный цвет стрелок */
+    }
+</style>
+
+{% endblock %}
